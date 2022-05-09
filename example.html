@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption Test</title>
+</head>
+<body>
+    <h4 id="encrypted-message"></h4>
+    <h4 id="decrypted-message"></h4>
+    
+    <script src="./crypto.js"></script>
+    <script>        
+        // Define passphrase to encrypt and decrypt messages.
+        var passphrase = "SomeStrongPassword";
+        
+        // Some random message.
+        var message = "This is a private message!";
+
+        // Encrypt message.
+        var encryptedMessage = CryptoJS.AES.encrypt(message, passphrase);
+
+        // Decrypt encrypted message.
+        var decryptedMessage = CryptoJS.AES.decrypt(encryptedMessage, passphrase);
+        
+        document.getElementById("encrypted-message").innerHTML = "Encrypted message: " + encryptedMessage.toString();
+        document.getElementById("decrypted-message").innerHTML = "Decrypted message: " + decryptedMessage.toString(CryptoJS.enc.Utf8);
+    </script>
+</body>
+</html>
